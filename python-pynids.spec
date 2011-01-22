@@ -8,8 +8,10 @@ Group:		Development/Languages/Python
 Source0:	http://jon.oberheide.org/pynids/downloads/pynids-%{version}.tar.gz
 # Source0-md5:	6ce600d0130b0feec9a3797a27825d15
 URL:		http://jon.oberheide.org/pynids/
+BuildRequires:	glib2-devel
 BuildRequires:	libnet-devel
 BuildRequires:	libpcap-devel
+BuildRequires:	pkgconfig
 BuildRequires:	python-devel
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
