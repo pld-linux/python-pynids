@@ -2,7 +2,7 @@
 Summary:	Python wrapper for libnids, a Network Intrusion Detection System library
 Name:		python-%{module}
 Version:	0.6.1
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Development/Languages/Python
 Source0:	http://jon.oberheide.org/pynids/downloads/pynids-%{version}.tar.gz
