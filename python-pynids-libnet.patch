@@ -1,0 +1,21 @@
+Restore TcpStream.kill() functionality (it aborts without libnet)
+--- pynids-0.6.2/setup.py.orig	2020-05-24 11:32:49.071887169 +0200
++++ pynids-0.6.2/setup.py	2020-05-24 11:51:30.615811244 +0200
+@@ -37,7 +37,7 @@
+ 
+         spawn(['tar', '-zxf', self.NIDSTAR], search_path = 1)
+         os.chdir(self.NIDSDIR)
+-        spawn([pathjoin('.','configure'), 'CFLAGS=-fPIC', '--disable-libglib', '--disable-libnet'])
++        spawn([pathjoin('.','configure'), 'CFLAGS=-fPIC', '--disable-libglib'])
+         spawn(['make'], search_path = 1)
+         os.chdir('..')
+ 
+@@ -67,7 +67,7 @@
+                             #define_macros = [ ("DEBUG", None), ],
+                             sources=["nidsmodule.c"],
+                             include_dirs = INCLUDE_DIRS,
+-                            libraries = ["pcap"],
++                            libraries = ["pcap", "net"],
+                             library_dirs = LIBRARY_DIRS,
+                             extra_objects = EXTRA_OBJECTS
+                         ) 

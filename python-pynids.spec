@@ -2,16 +2,19 @@
 Summary:	Python wrapper for libnids, a Network Intrusion Detection System library
 Summary(pl.UTF-8):	Pythonowe obudowanie libnids - systemu wykrywania intruzów w sieci
 Name:		python-%{module}
-Version:	0.6.1
-Release:	4
+Version:	0.6.2
+Release:	1
 # module itself is GPL v2+, but libnids is GPL v2 only
 License:	GPL v2
 Group:		Development/Languages/Python
-#Source0Download: https://jon.oberheide.org/pynids/
-Source0:	https://jon.oberheide.org/files/pynids-%{version}.tar.gz
-# Source0-md5:	6ce600d0130b0feec9a3797a27825d15
+##Source0Download: https://jon.oberheide.org/pynids/ (up to 0.6.1
+#Source0:	https://jon.oberheide.org/files/pynids-%{version}.tar.gz
+#Source0Download: https://pypi.org/simple/pynids/
+Source0:	https://files.pythonhosted.org/packages/source/p/pynids/pynids-%{version}.tar.gz
+# Source0-md5:	6f2a15ee393beec4c9d6ce65f869a58c
+Patch0:		%{name}-build.patch
+Patch1:		%{name}-libnet.patch
 URL:		https://jon.oberheide.org/pynids/
-BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	libnet-devel >= 1:1.1
 BuildRequires:	libpcap-devel
 BuildRequires:	pkgconfig
@@ -36,6 +39,8 @@ komunikacji w sieci z poziomu Pythona.
 
 %prep
 %setup -q -n %{module}-%{version}
+%patch0 -p1
+%patch1 -p1
 
 %build
 %py_build
@@ -52,7 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES README Example
+%doc CHANGES README
 %attr(755,root,root) %{py_sitedir}/nidsmodule.so
 %if "%{py_ver}" > "2.4"
 %{py_sitedir}/pynids-%{version}-py*.egg-info

@@ -1,0 +1,11 @@
+--- pynids-0.6.2/setup.py.orig	2016-11-29 22:28:39.000000000 +0100
++++ pynids-0.6.2/setup.py	2020-05-24 11:10:24.279172536 +0200
+@@ -14,7 +14,7 @@
+ 
+ PKGNAME  = 'libnids-1.25'
+ PKGTAR   = PKGNAME + '.tar.gz'
+-BUILDDIR = '/tmp/' + PKGNAME
++BUILDDIR = PKGNAME
+ 
+ INCLUDE_DIRS  = ['/usr/local/include', '/opt/local/include']
+ LIBRARY_DIRS  = ['/usr/local/lib', '/opt/local/lib']
